@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
 
     // Update is called once per frame
     void Update()

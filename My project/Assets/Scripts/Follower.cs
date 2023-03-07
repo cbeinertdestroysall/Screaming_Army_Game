@@ -1,22 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Follower : MonoBehaviour
 {
 
     public float speed;
-    public GameObject Player;
+    public int distance = 20;
+    public GameObject theFollowed;
 
-    // Start is called before the first frame update
+    bool awaken;
+
+
     void Start()
     {
-        
+        awaken = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, speed * Time.deltaTime);
+        if (awaken)
+        {
+            if (Vector2.Distance(transform.position, theFollowed.transform.position) > 110)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, theFollowed.transform.position, speed * Time.deltaTime);
+            }
+        }      
+    }
+
+    public void AwakeScreamer()
+    {
+        theFollowed = ScreamManager.screamManager.currentScreamerChain.Last();
+        ScreamManager.screamManager.currentScreamerChain.Add(gameObject);
+        awaken = true;
     }
 }
