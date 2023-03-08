@@ -1893,8 +1893,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scream: 258
   screamToWake: 000100000101000000010000
+  numbers: []
   screamPatternDisplay: {fileID: 1513866421}
   player: {fileID: 1883104609}
+  timeLeft: 0
+  timerCanStart: 0
 --- !u!212 &290227011
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2617,8 +2620,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scream: 257
   screamToWake: 0001000000010000
+  numbers:
+  - {fileID: 993012800}
+  - {fileID: 46962586}
   screamPatternDisplay: {fileID: 496732227}
   player: {fileID: 1883104609}
+  timeLeft: 5
+  timerCanStart: 0
 --- !u!212 &376795664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3675,8 +3683,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scream: 259
   screamToWake: 01010000000100000201000001010000
+  numbers: []
   screamPatternDisplay: {fileID: 402099138}
   player: {fileID: 1883104609}
+  timeLeft: 0
+  timerCanStart: 0
 --- !u!212 &585428480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9927,8 +9938,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scream: 260
   screamToWake: 0301000001010000000100000301000002010000
+  numbers: []
   screamPatternDisplay: {fileID: 2039836434}
   player: {fileID: 1883104609}
+  timeLeft: 0
+  timerCanStart: 0
 --- !u!212 &1546478457
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11301,8 +11315,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scream: 256
   screamToWake: 
+  numbers: []
   screamPatternDisplay: {fileID: 0}
   player: {fileID: 0}
+  timeLeft: 0
+  timerCanStart: 0
 --- !u!212 &1883104613
 SpriteRenderer:
   m_ObjectHideFlags: 0
