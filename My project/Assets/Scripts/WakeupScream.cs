@@ -25,6 +25,8 @@ public class WakeupScream : MonoBehaviour
 
     public bool timeUp = false;
 
+    bool poped = false;
+
     IEnumerator DisableScreenPattern()
     {
         screamPatternDisplay.SetActive(true);
@@ -32,19 +34,13 @@ public class WakeupScream : MonoBehaviour
         Debug.Log("coroutine has ended");
         screamPatternDisplay.SetActive(false);
         coroutineCanStart = false;
-
+        poped = true;
 
     }
 
 
     void Update()
     {
-        if (coroutineCanStart)
-        {
-            StartCoroutine(DisableScreenPattern());
-            coroutineCanStart = false;
-            
-        }
         
         if (coroutineCanStart == false)
         {
@@ -57,10 +53,9 @@ public class WakeupScream : MonoBehaviour
             {
                 screamPatternDisplay.SetActive(false);
             }
-            else if (Vector2.Distance(transform.position, player.transform.position) <= 3)
+            else if (Vector2.Distance(transform.position, player.transform.position) <= 3 && !poped)
             {
-                coroutineCanStart = true;
-                StopCoroutine(DisableScreenPattern());
+                StartCoroutine(DisableScreenPattern());               
             }
             else
             {
@@ -70,14 +65,5 @@ public class WakeupScream : MonoBehaviour
             }
         }       
     }
-
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            coroutineCanStart = true;
-            
-        }
-    }*/
 
 }
