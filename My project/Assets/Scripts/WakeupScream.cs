@@ -17,9 +17,6 @@ public class WakeupScream : MonoBehaviour
     public GameObject screamPatternDisplay;
     public GameObject player;
 
-    
-    public float timeStart = 5;
-    public float timeLeft = 5;
 
     public bool coroutineCanStart;
 
@@ -30,7 +27,7 @@ public class WakeupScream : MonoBehaviour
     IEnumerator DisableScreenPattern()
     {
         screamPatternDisplay.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Debug.Log("coroutine has ended");
         screamPatternDisplay.SetActive(false);
         coroutineCanStart = false;

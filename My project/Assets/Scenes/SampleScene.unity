@@ -1897,8 +1897,6 @@ MonoBehaviour:
   numbers: []
   screamPatternDisplay: {fileID: 1513866421}
   player: {fileID: 1883104609}
-  timeStart: 5
-  timeLeft: 0
   coroutineCanStart: 0
   timeUp: 0
 --- !u!212 &290227011
@@ -1961,8 +1959,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290227007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.32, y: -5.95, z: 0}
-  m_LocalScale: {x: 1.3387, y: 2.3171, z: 1}
+  m_LocalPosition: {x: -7.886, y: -1.2449, z: 0}
+  m_LocalScale: {x: 0.9127257, y: 1.5797988, z: 0.6818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1411946959}
@@ -2629,8 +2627,6 @@ MonoBehaviour:
   - {fileID: 46962586}
   screamPatternDisplay: {fileID: 496732227}
   player: {fileID: 1883104609}
-  timeStart: 5
-  timeLeft: 5
   coroutineCanStart: 0
   timeUp: 0
 --- !u!212 &376795664
@@ -2693,8 +2689,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376795660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.69, y: -1.08, z: 0}
-  m_LocalScale: {x: 1.3387, y: 2.3171, z: 1}
+  m_LocalPosition: {x: 13.257, y: 2.0755, z: 0}
+  m_LocalScale: {x: 0.9127257, y: 1.5797988, z: 0.6818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1871989693}
@@ -2728,22 +2724,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!58 &376795667
-CircleCollider2D:
+--- !u!50 &376795667
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376795660}
-  m_Enabled: 1
-  m_Density: 1
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.040926, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.9541441
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &402099138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,8 +3709,6 @@ MonoBehaviour:
   numbers: []
   screamPatternDisplay: {fileID: 402099138}
   player: {fileID: 1883104609}
-  timeStart: 5
-  timeLeft: 0
   coroutineCanStart: 0
   timeUp: 0
 --- !u!212 &585428480
@@ -3772,8 +3771,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585428476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.41, y: 17.45, z: 0}
-  m_LocalScale: {x: 1.3387, y: 2.3171, z: 1}
+  m_LocalPosition: {x: -7.2655, y: 14.709, z: 0}
+  m_LocalScale: {x: 0.9127257, y: 1.5797988, z: 0.6818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2006095165}
@@ -9965,8 +9964,6 @@ MonoBehaviour:
   numbers: []
   screamPatternDisplay: {fileID: 2039836434}
   player: {fileID: 1883104609}
-  timeStart: 5
-  timeLeft: 0
   coroutineCanStart: 0
   timeUp: 0
 --- !u!212 &1546478457
@@ -10029,8 +10026,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546478453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.34, y: 22.58, z: 0}
-  m_LocalScale: {x: 1.3387, y: 2.3171, z: 1}
+  m_LocalPosition: {x: 14.382, y: 18.207, z: 0}
+  m_LocalScale: {x: 0.9127257, y: 1.5797988, z: 0.6818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 344961384}
@@ -11314,14 +11311,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883104609}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -11344,8 +11341,6 @@ MonoBehaviour:
   numbers: []
   screamPatternDisplay: {fileID: 0}
   player: {fileID: 0}
-  timeStart: 5
-  timeLeft: 0
   coroutineCanStart: 0
   timeUp: 0
 --- !u!212 &1883104613
@@ -11408,8 +11403,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883104609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.399985, y: -3.18, z: 0}
-  m_LocalScale: {x: 1.3387, y: 2.3171, z: 1}
+  m_LocalPosition: {x: 6.9227, y: 0.64372, z: 0}
+  m_LocalScale: {x: 0.9127257, y: 1.5797988, z: 0.6818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 117037985}
