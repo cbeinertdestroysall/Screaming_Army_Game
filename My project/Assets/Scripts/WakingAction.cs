@@ -12,11 +12,13 @@ public class WakingAction : MonoBehaviour
     AudioSource audioSource; //scream audio
     int screamIndex; //input scream's audio index
     ScreamManager screamManager;
+    public WakeupScream wakeup;
 
     void Start()
     {
         currentWakeupScreamIndex = 0;
         screamManager = gameObject.GetComponent<ScreamManager>();
+        //wakeup = GetComponent<WakeupScream>();
     }
 
     void Update()
@@ -76,7 +78,7 @@ public class WakingAction : MonoBehaviour
             currentWakeupScreamIndex++;
 
             //successfully wake the person up
-            if (currentWakeupScreamIndex == patternToWake.Count)
+            if (currentWakeupScreamIndex == patternToWake.Count && wakeup.timeUp == false)
             {               
                 Debug.Log("WOKE UP!");
                 screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<Follower>().AwakeScreamer();

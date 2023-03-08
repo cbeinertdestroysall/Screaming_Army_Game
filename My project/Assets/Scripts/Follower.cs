@@ -27,9 +27,14 @@ public class Follower : MonoBehaviour
 
     public void AwakeScreamer()
     {
+        if (this.GetComponent<WakeupScream>().timeUp)
+        {
+            return;
+        }
         theFollowed = ScreamManager.screamManager.currentScreamerChain.Last();
         ScreamManager.screamManager.currentScreamerChain.Add(gameObject);
         this.GetComponent<WakeupScream>().timerCanStart = false;
         awaken = true;
+        
     }
 }

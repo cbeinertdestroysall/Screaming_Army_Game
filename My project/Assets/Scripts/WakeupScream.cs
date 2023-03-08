@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WakeupScream : MonoBehaviour
 {
+
     [SerializeField]
     KeyCode scream; //this character's scream key
 
@@ -16,9 +17,13 @@ public class WakeupScream : MonoBehaviour
     public GameObject screamPatternDisplay;
     public GameObject player;
 
-    public float timeLeft = 10;
+    
+    public float timeStart = 5;
+    public float timeLeft = 5;
 
     public bool timerCanStart;
+
+    public bool timeUp = false;
 
     /*IEnumerator TimeLeft()
     {
@@ -36,10 +41,11 @@ public class WakeupScream : MonoBehaviour
                 timeLeft -= Time.deltaTime;
             else if (timeLeft <= 0)
                 timeLeft = 0;
+                timeUp = true;
         }
         else 
         {
-            timeLeft = 10;
+            timeLeft = timeStart;
         }
 
         if(player != null)
