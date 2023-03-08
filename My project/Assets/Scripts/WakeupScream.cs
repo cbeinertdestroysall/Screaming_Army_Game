@@ -21,31 +21,34 @@ public class WakeupScream : MonoBehaviour
     public float timeStart = 5;
     public float timeLeft = 5;
 
-    public bool timerCanStart;
+    public bool coroutineCanStart;
 
     public bool timeUp = false;
 
-    /*IEnumerator TimeLeft()
+    IEnumerator DisableScreenPattern()
     {
+        screamPatternDisplay.SetActive(true);
         yield return new WaitForSeconds(1);
-        timeLeft -= Time.deltaTime;
-        timerCanStart = false;
-    }*/
+        Debug.Log("coroutine has ended");
+        screamPatternDisplay.SetActive(false);
+        coroutineCanStart = false;
+
+
+    }
 
 
     void Update()
     {
-        if (timerCanStart)
+        if (coroutineCanStart)
         {
-            if (timeLeft > 0)
-                timeLeft -= Time.deltaTime;
-            else if (timeLeft <= 0)
-                timeLeft = 0;
-                timeUp = true;
+            StartCoroutine(DisableScreenPattern());
+            coroutineCanStart = false;
+            
         }
-        else 
+        
+        if (coroutineCanStart == false)
         {
-            timeLeft = timeStart;
+            StopCoroutine(DisableScreenPattern());
         }
 
         if(player != null)
@@ -56,15 +59,25 @@ public class WakeupScream : MonoBehaviour
             }
             else if (Vector2.Distance(transform.position, player.transform.position) <= 3)
             {
-                timerCanStart = true;
-                screamPatternDisplay.SetActive(true);
+                coroutineCanStart = true;
+                StopCoroutine(DisableScreenPattern());
             }
             else
             {
-                timerCanStart = false;
+                coroutineCanStart = false;
                 screamPatternDisplay.SetActive(false);
+                StopCoroutine(DisableScreenPattern());
             }
         }       
     }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            coroutineCanStart = true;
+            
+        }
+    }*/
 
 }
