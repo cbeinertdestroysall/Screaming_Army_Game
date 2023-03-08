@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class WakeupScream : MonoBehaviour
 {
@@ -24,10 +26,17 @@ public class WakeupScream : MonoBehaviour
 
     bool poped = false;
 
+    bool timerCanStart;
+    
+    public float timeLeft;
+
+    public GameObject timer;
+
     IEnumerator DisableScreenPattern()
     {
+        Debug.Log("coroutine started");
         screamPatternDisplay.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(timeLeft);
         Debug.Log("coroutine has ended");
         screamPatternDisplay.SetActive(false);
         coroutineCanStart = false;
@@ -38,6 +47,17 @@ public class WakeupScream : MonoBehaviour
 
     void Update()
     {
+        if (timer != null)
+        {
+            timer.GetComponent<TMP_Text>().text = "Time left to view pattern: " + timeLeft;
+        }
+        if (timerCanStart && timer != null)
+        {
+            if (timeLeft > 0)
+                timeLeft -= Time.deltaTime;
+            else if (timeLeft <= 0)
+                timeLeft = 0;
+        }
         
         if (coroutineCanStart == false)
         {
@@ -52,12 +72,15 @@ public class WakeupScream : MonoBehaviour
             }
             else if (Vector2.Distance(transform.position, player.transform.position) <= 3 && !poped)
             {
+                timerCanStart = true;
+
                 StartCoroutine(DisableScreenPattern());               
             }
             else
             {
                 coroutineCanStart = false;
                 screamPatternDisplay.SetActive(false);
+                //poped = false;
                 StopCoroutine(DisableScreenPattern());
             }
         }       
