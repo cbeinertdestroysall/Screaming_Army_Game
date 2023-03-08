@@ -1,45 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WakingAction : MonoBehaviour
 {
-    public KeyCode scream;
-    public List<KeyCode> patternToWake = new List<KeyCode>();
-
-    int currentWakeupIndex;
-
+    KeyCode scream; //input scream key
+    List<KeyCode> patternToWake = new List<KeyCode>(); //keys to wake the person
+    int currentWakeupScreamIndex; //current screaming progress of the pattern
+    int currentAsleepScreamer; //the top asleep screamer in the sleeping screamers list
     [SerializeField]
-    int currentAsleepScreamer;
-    [SerializeField]
-    AudioSource audioSource;
-
-    int screamIndex;
+    AudioSource audioSource; //scream audio
+    int screamIndex; //input scream's audio index
+    ScreamManager screamManager;
 
     void Start()
     {
-        currentWakeupIndex = 0;
+        currentWakeupScreamIndex = 0;
+        screamManager = gameObject.GetComponent<ScreamManager>();
     }
 
     void Update()
     {
-        
         if (Input.anyKey)
         {
+            //get which key pressed
             foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKey(vKey))
                 {
-                    //Debug.Log(vKey);
-                    List<KeyCode> screamKeys = gameObject.GetComponent<ScreamManager>().screamKeys;
-                    for (int i = 0; i < screamKeys.Count; i++)
+                    //store the key if it matches the scream input key
+                    List<KeyCode> screamKeys = screamManager.screamKeys;
+                    for (int i = 0; i < screamManager.currentScreamerChain.Count; i++)
                     {
                         if (screamKeys[i] == vKey)
                         {
-                            scream = gameObject.GetComponent<ScreamManager>().screamKeys[i];
+                            scream = screamManager.screamKeys[i];
                             screamIndex = i;
-                            //Debug.Log("scream code is: " + scream);
                             break;
                         }
                     }
@@ -48,43 +44,52 @@ public class WakingAction : MonoBehaviour
         }
         if (Input.GetKeyDown(scream))
         {
-            Debug.Log("screaming key = " + scream);
-            patternToWake = gameObject.GetComponent<ScreamManager>().asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamToWake;
-            if (patternToWake != null)
+            Debug.Log("screaming key input = " + scream);
+            //when all screamers are awake, play audio without checking other conditions
+            if (currentAsleepScreamer >= screamManager.asleepScreamers.Count)
             {
-                MatchPattern();
+                audioSource.clip = screamManager.screamAudios[screamIndex];
+                audioSource.Play();
             }
-
+            else
+            {
+                patternToWake = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamToWake;
+                if (patternToWake != null)
+                {
+                    MatchPattern();
+                }
+            }
         }
     }
 
     void MatchPattern()
     {
-        //Debug.Log("matching...");
-        audioSource.clip = gameObject.GetComponent<ScreamManager>().screamAudios[screamIndex];
+        audioSource.clip = screamManager.screamAudios[screamIndex];
         audioSource.Play();
-        if (patternToWake[currentWakeupIndex] == scream)
+
+        //scream input matches
+        if (patternToWake[currentWakeupScreamIndex] == scream)
         {
             Debug.Log("correct scream");
             
             scream = KeyCode.None;
-            currentWakeupIndex++;
-            if (currentWakeupIndex == patternToWake.Count)
-            {
-                //wake the person up
+            currentWakeupScreamIndex++;
+
+            //successfully wake the person up
+            if (currentWakeupScreamIndex == patternToWake.Count)
+            {               
                 Debug.Log("WOKE UP!");
-                gameObject.GetComponent<ScreamManager>().asleepScreamers[currentAsleepScreamer].GetComponent<Follower>().AwakeScreamer();
-                gameObject.GetComponent<ScreamManager>().asleepScreamers[currentAsleepScreamer].GetComponent<Image>().color = new Color(255, 255, 255);
+                screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<Follower>().AwakeScreamer();
+                screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
 
-                currentWakeupIndex = 0;
-
+                currentWakeupScreamIndex = 0;
                 currentAsleepScreamer++;
             }
         }
         else
         {
             Debug.Log("wrong scream");
-            currentWakeupIndex = 0;
+            currentWakeupScreamIndex = 0;
         }
     }
 }

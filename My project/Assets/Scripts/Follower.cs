@@ -5,27 +5,22 @@ using System.Linq;
 
 public class Follower : MonoBehaviour
 {
-
     public float speed;
-    public int distance = 20;
     public GameObject theFollowed;
-
-    bool awaken;
-
+    public bool awaken;
 
     void Start()
     {
         awaken = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (awaken)
         {
-            if (Vector2.Distance(transform.position, theFollowed.transform.position) > 110)
+            if (Vector2.Distance(transform.position, theFollowed.transform.position) > 2)
             {
-                transform.position = Vector3.MoveTowards(transform.position, theFollowed.transform.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, theFollowed.transform.position, speed * Time.deltaTime);
             }
         }      
     }

@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 moveDirection;
 
-    // Update is called once per frame
     void Update()
     {
         Move();
