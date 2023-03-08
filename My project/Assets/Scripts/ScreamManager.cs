@@ -11,6 +11,8 @@ public class ScreamManager : MonoBehaviour
     [SerializeField]
     public List<KeyCode> screamKeys = new List<KeyCode>();
     [SerializeField]
+    public List<KeyCode> screamKeysAlt = new List<KeyCode>();
+    [SerializeField]
     public List<GameObject> asleepScreamers = new List<GameObject>();
     [SerializeField]
     public List<AudioClip> screamAudios = new List<AudioClip>();

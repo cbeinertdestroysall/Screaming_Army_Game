@@ -32,11 +32,18 @@ public class WakingAction : MonoBehaviour
                 {
                     //store the key if it matches the scream input key
                     List<KeyCode> screamKeys = screamManager.screamKeys;
+                    List<KeyCode> screamKeysAlt = screamManager.screamKeysAlt;
                     for (int i = 0; i < screamManager.currentScreamerChain.Count; i++)
                     {
                         if (screamKeys[i] == vKey)
                         {
                             scream = screamManager.screamKeys[i];
+                            screamIndex = i;
+                            break;
+                        }
+                        else if(screamKeysAlt[i] == vKey)
+                        {
+                            scream = screamManager.screamKeysAlt[i];
                             screamIndex = i;
                             break;
                         }
@@ -46,6 +53,8 @@ public class WakingAction : MonoBehaviour
         }
         if (Input.GetKeyDown(scream))
         {
+            scream = ConvertInputKey(scream);
+            print(scream);
             Debug.Log("screaming key input = " + scream);
             //when all screamers are awake, play audio without checking other conditions
             if (currentAsleepScreamer >= screamManager.asleepScreamers.Count)
@@ -93,5 +102,34 @@ public class WakingAction : MonoBehaviour
             Debug.Log("wrong scream");
             currentWakeupScreamIndex = 0;
         }
+    }
+
+    KeyCode ConvertInputKey(KeyCode k)
+    {
+        if(k == KeyCode.Alpha0)
+        {
+            return KeyCode.Keypad0;
+        }
+        else if (k == KeyCode.Alpha1)
+        {
+            return KeyCode.Keypad1;
+        }
+        else if (k == KeyCode.Alpha2)
+        {
+            return KeyCode.Keypad2;
+        }
+        else if (k == KeyCode.Alpha3)
+        {
+            return KeyCode.Keypad3;
+        }
+        else if (k == KeyCode.Alpha4)
+        {
+            return KeyCode.Keypad4;
+        }
+        else if (k == KeyCode.Alpha5)
+        {
+            return KeyCode.Keypad5;
+        }
+        return k;
     }
 }

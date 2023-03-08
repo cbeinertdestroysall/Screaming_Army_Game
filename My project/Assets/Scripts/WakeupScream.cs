@@ -9,9 +9,12 @@ public class WakeupScream : MonoBehaviour
 
     [SerializeField]
     KeyCode scream; //this character's scream key
+    [SerializeField]
+    KeyCode screamAlt; //another scream key
 
     [SerializeField]
     public List<KeyCode> screamToWake = new List<KeyCode>(); //the pattern of scream to wake this character up
+    
 
     [SerializeField]
     public List<GameObject> numbers = new List<GameObject>();
@@ -32,6 +35,7 @@ public class WakeupScream : MonoBehaviour
 
     public GameObject timer;
 
+
     IEnumerator DisableScreenPattern()
     {
         Debug.Log("coroutine started");
@@ -49,7 +53,7 @@ public class WakeupScream : MonoBehaviour
     {
         if (timer != null)
         {
-            timer.GetComponent<TMP_Text>().text = "Time left to view pattern: " + timeLeft;
+            timer.GetComponent<TMP_Text>().text = "Time left to view pattern: " + Mathf.RoundToInt(timeLeft);
         }
         if (timerCanStart && timer != null)
         {
@@ -58,12 +62,12 @@ public class WakeupScream : MonoBehaviour
             else if (timeLeft <= 0)
                 timeLeft = 0;
         }
-        
-        if (coroutineCanStart == false)
-        {
-            StopCoroutine(DisableScreenPattern());
-        }
 
+
+        if (timeLeft > 0)
+        {
+            poped = false;
+        }
         if(player != null)
         {
             if (gameObject.GetComponent<Follower>().awaken)
@@ -80,7 +84,7 @@ public class WakeupScream : MonoBehaviour
             {
                 coroutineCanStart = false;
                 screamPatternDisplay.SetActive(false);
-                //poped = false;
+                timerCanStart = false;
                 StopCoroutine(DisableScreenPattern());
             }
         }       

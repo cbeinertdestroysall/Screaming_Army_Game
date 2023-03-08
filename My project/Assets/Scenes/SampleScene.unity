@@ -477,6 +477,7 @@ MonoBehaviour:
   screamers:
   - {fileID: 1883104609}
   screamKeys: 0001000001010000020100000301000004010000
+  screamKeysAlt: 3000000031000000320000003300000034000000
   asleepScreamers:
   - {fileID: 376795660}
   - {fileID: 290227007}
@@ -1893,6 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scream: 258
+  screamAlt: 50
   screamToWake: 000100000101000000010000
   numbers: []
   screamPatternDisplay: {fileID: 1513866421}
@@ -2623,6 +2625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scream: 257
+  screamAlt: 49
   screamToWake: 0001000000010000
   numbers:
   - {fileID: 993012800}
@@ -3883,6 +3886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scream: 259
+  screamAlt: 51
   screamToWake: 01010000000100000201000001010000
   numbers: []
   screamPatternDisplay: {fileID: 402099138}
@@ -10926,6 +10930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scream: 260
+  screamAlt: 52
   screamToWake: 0301000001010000000100000301000002010000
   numbers: []
   screamPatternDisplay: {fileID: 2039836434}
@@ -12305,6 +12310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scream: 256
+  screamAlt: 48
   screamToWake: 
   numbers: []
   screamPatternDisplay: {fileID: 0}
