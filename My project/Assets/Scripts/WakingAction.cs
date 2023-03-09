@@ -82,6 +82,9 @@ public class WakingAction : MonoBehaviour
         if (patternToWake[currentWakeupScreamIndex] == scream)
         {
             Debug.Log("correct scream");
+
+            GameObject go = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamPatternDisplay.transform.GetChild(currentWakeupScreamIndex).gameObject;
+            go.GetComponent<SpriteRenderer>().color = new Color32(134, 255, 245, 255);
             
             scream = KeyCode.None;
             currentWakeupScreamIndex++;
@@ -91,7 +94,7 @@ public class WakingAction : MonoBehaviour
             {               
                 Debug.Log("WOKE UP!");
                 screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<Follower>().AwakeScreamer();
-                screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
 
                 currentWakeupScreamIndex = 0;
                 currentAsleepScreamer++;
@@ -100,6 +103,14 @@ public class WakingAction : MonoBehaviour
         else
         {
             Debug.Log("wrong scream");
+            foreach (Transform child in screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamPatternDisplay.transform)
+            {
+                if(child.gameObject.TryGetComponent<SpriteRenderer>(out SpriteRenderer t))
+                {
+                    t.color = new Color32(255, 255, 255, 255);
+                }
+            }
+            
             currentWakeupScreamIndex = 0;
         }
     }

@@ -38,10 +38,10 @@ public class WakeupScream : MonoBehaviour
 
     IEnumerator DisableScreenPattern()
     {
-        Debug.Log("coroutine started");
+        //Debug.Log("coroutine started");
         screamPatternDisplay.SetActive(true);
         yield return new WaitForSeconds(timeLeft);
-        Debug.Log("coroutine has ended");
+        //Debug.Log("coroutine has ended");
         screamPatternDisplay.SetActive(false);
         coroutineCanStart = false;
         poped = true;
