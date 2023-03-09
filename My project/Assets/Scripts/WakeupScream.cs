@@ -53,7 +53,7 @@ public class WakeupScream : MonoBehaviour
     {
         if (timer != null)
         {
-            timer.GetComponent<TMP_Text>().text = "Time left to view pattern: " + Mathf.RoundToInt(timeLeft);
+            timer.GetComponent<TMP_Text>().text = /*"Time left to view pattern: " +*/ Mathf.RoundToInt(timeLeft).ToString();
         }
         if (timerCanStart && timer != null)
         {

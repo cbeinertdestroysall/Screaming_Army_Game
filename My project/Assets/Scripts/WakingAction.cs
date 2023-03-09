@@ -84,7 +84,7 @@ public class WakingAction : MonoBehaviour
             Debug.Log("correct scream");
 
             GameObject go = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamPatternDisplay.transform.GetChild(currentWakeupScreamIndex).gameObject;
-            go.GetComponent<SpriteRenderer>().color = new Color32(134, 255, 245, 255);
+            go.GetComponent<SpriteRenderer>().color = new Color32(246, 246, 176, 255);
             
             scream = KeyCode.None;
             currentWakeupScreamIndex++;
