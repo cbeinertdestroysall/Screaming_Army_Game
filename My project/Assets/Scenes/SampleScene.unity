@@ -493,6 +493,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6d08ecf493379bd4bbc9576da0649d15, type: 3}
   - {fileID: 8300000, guid: 749e458d66330524eb91a4ac7a6da80f, type: 3}
   - {fileID: 8300000, guid: 508b80b7b703a734882a7103dc1239c3, type: 3}
+  snoreAudio: {fileID: 8300000, guid: e7c4740b817c2ed4fbaf4f86e32c6e67, type: 3}
   currentScreamerChain:
   - {fileID: 1883104609}
 --- !u!4 &63362273
@@ -4048,7 +4049,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.5005467, y: 5.92}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
