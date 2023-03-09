@@ -8,14 +8,21 @@ public class Follower : MonoBehaviour
     public float speed;
     public GameObject theFollowed;
     public bool awaken;
-
+    public Animator FollowerAnimator;
+    Vector2 movement;
     void Start()
     {
+        //FollowerAnimator = new Animator;
+       
         awaken = false;
     }
 
     void Update()
     {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        FollowerAnimator.SetFloat("Horizontal", movement.x);
+        FollowerAnimator.SetFloat("Vertical", movement.y);
         if (awaken)
         {
             if (Vector2.Distance(transform.position, theFollowed.transform.position) > 2)
@@ -35,6 +42,7 @@ public class Follower : MonoBehaviour
         ScreamManager.screamManager.currentScreamerChain.Add(gameObject);
         this.GetComponent<WakeupScream>().coroutineCanStart = false;
         awaken = true;
+        FollowerAnimator.SetBool("Screamed", true);
         
     }
 }
