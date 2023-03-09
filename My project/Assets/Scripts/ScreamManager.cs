@@ -16,6 +16,8 @@ public class ScreamManager : MonoBehaviour
     public List<GameObject> asleepScreamers = new List<GameObject>();
     [SerializeField]
     public List<AudioClip> screamAudios = new List<AudioClip>();
+    [SerializeField]
+    public AudioClip snoreAudio;
 
     public List<GameObject> currentScreamerChain = new List<GameObject>();
 

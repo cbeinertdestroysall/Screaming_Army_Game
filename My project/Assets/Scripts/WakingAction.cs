@@ -103,6 +103,8 @@ public class WakingAction : MonoBehaviour
         else
         {
             Debug.Log("wrong scream");
+            audioSource.clip = screamManager.snoreAudio;
+            audioSource.Play();
             foreach (Transform child in screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamPatternDisplay.transform)
             {
                 if(child.gameObject.TryGetComponent<SpriteRenderer>(out SpriteRenderer t))
