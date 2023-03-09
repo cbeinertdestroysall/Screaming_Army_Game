@@ -799,7 +799,7 @@ MonoBehaviour:
   player: {fileID: 1883104609}
   coroutineCanStart: 0
   timeUp: 0
-  timeLeft: 15
+  timeLeft: 20
   timer: {fileID: 146556653}
 --- !u!212 &89517576
 SpriteRenderer:
@@ -12107,7 +12107,7 @@ MonoBehaviour:
   player: {fileID: 1883104609}
   coroutineCanStart: 0
   timeUp: 0
-  timeLeft: 15
+  timeLeft: 20
   timer: {fileID: 622377827}
 --- !u!212 &1389655402
 SpriteRenderer:
