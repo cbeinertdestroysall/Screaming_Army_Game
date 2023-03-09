@@ -65,9 +65,15 @@ public class WakingAction : MonoBehaviour
             else
             {
                 patternToWake = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamToWake;
-                if (patternToWake != null)
+                bool reached = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().isInRange;
+                
+                if (patternToWake != null && reached)
                 {
                     MatchPattern();
+                }
+                if (!reached)
+                {
+                    PlayScream();
                 }
             }
         }
@@ -115,6 +121,12 @@ public class WakingAction : MonoBehaviour
             
             currentWakeupScreamIndex = 0;
         }
+    }
+
+    void PlayScream()
+    {
+        audioSource.clip = screamManager.screamAudios[screamIndex];
+        audioSource.Play();
     }
 
     KeyCode ConvertInputKey(KeyCode k)

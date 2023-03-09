@@ -35,6 +35,8 @@ public class WakeupScream : MonoBehaviour
 
     public GameObject timer;
 
+    public bool isInRange = false;
+
 
     IEnumerator DisableScreenPattern()
     {
@@ -73,11 +75,12 @@ public class WakeupScream : MonoBehaviour
             if (gameObject.GetComponent<Follower>().awaken)
             {
                 screamPatternDisplay.SetActive(false);
+                isInRange = false;
             }
             else if (Vector2.Distance(transform.position, player.transform.position) <= 3 && !poped)
             {
                 timerCanStart = true;
-
+                isInRange = true;
                 StartCoroutine(DisableScreenPattern());               
             }
             else
@@ -85,6 +88,7 @@ public class WakeupScream : MonoBehaviour
                 coroutineCanStart = false;
                 screamPatternDisplay.SetActive(false);
                 timerCanStart = false;
+                isInRange = false;
                 StopCoroutine(DisableScreenPattern());
             }
         }       
