@@ -67,11 +67,11 @@ public class WakingAction : MonoBehaviour
                 patternToWake = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamToWake;
                 bool reached = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().isInRange;
                 
-                if (patternToWake != null && reached)
+                if (patternToWake != null && reached && !audioSource.isPlaying)
                 {
                     MatchPattern();
                 }
-                if (!reached)
+                if (!reached && !audioSource.isPlaying)
                 {
                     PlayScream();
                 }
