@@ -18,7 +18,6 @@ public class WakingAction : MonoBehaviour
     {
         currentWakeupScreamIndex = 0;
         screamManager = gameObject.GetComponent<ScreamManager>();
-        //wakeup = GetComponent<WakeupScream>();
     }
 
     void Update()
@@ -59,19 +58,19 @@ public class WakingAction : MonoBehaviour
             //when all screamers are awake, play audio without checking other conditions
             if (currentAsleepScreamer >= screamManager.asleepScreamers.Count)
             {
-                audioSource.clip = screamManager.screamAudios[screamIndex];
-                audioSource.Play();
+                AudioSource s = screamManager.currentScreamerChain[screamIndex].GetComponent<AudioSource>();
+                s.Play();
             }
             else
             {
                 patternToWake = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().screamToWake;
                 bool reached = screamManager.asleepScreamers[currentAsleepScreamer].GetComponent<WakeupScream>().isInRange;
                 
-                if (patternToWake != null && reached && !audioSource.isPlaying)
+                if (patternToWake != null && reached)
                 {
                     MatchPattern();
                 }
-                if (!reached && !audioSource.isPlaying)
+                if (!reached)
                 {
                     PlayScream();
                 }
@@ -81,8 +80,8 @@ public class WakingAction : MonoBehaviour
 
     void MatchPattern()
     {
-        audioSource.clip = screamManager.screamAudios[screamIndex];
-        audioSource.Play();
+        AudioSource s = screamManager.currentScreamerChain[screamIndex].GetComponent<AudioSource>();
+        s.Play();
 
         //scream input matches
         if (patternToWake[currentWakeupScreamIndex] == scream)
@@ -125,8 +124,8 @@ public class WakingAction : MonoBehaviour
 
     void PlayScream()
     {
-        audioSource.clip = screamManager.screamAudios[screamIndex];
-        audioSource.Play();
+        AudioSource s = screamManager.currentScreamerChain[screamIndex].GetComponent<AudioSource>();
+        s.Play();
     }
 
     KeyCode ConvertInputKey(KeyCode k)
